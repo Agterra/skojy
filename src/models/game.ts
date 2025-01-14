@@ -3,6 +3,7 @@ import shuffle from "../utils/shuffle"
 import Board from "./board"
 import Card from "./card"
 import Player from "./player"
+import * as readline from 'node:readline'
 
 export default class Game {
     public players: Player[]
@@ -43,11 +44,30 @@ export default class Game {
             console.log(this.getGameInfo())
             // Notification des autres joueurs - Infos
             // Action de selection du joueur
+            this.takeAction()
             // Notification des autres joueurs - Action
-            const hasFinished = this.currentPlayer().board.isFullyRevealed()
+            const hasFinished = this.isLastTurn()
             // Notification des autres joueurs
         }
         return false
+    }
+
+    drawCard(): Card {
+        if (this.deck.length == 0) throw new Error("Deck is empty !")
+        return this.deck.pop()!
+    }
+
+    discardCard(card: Card): void {
+        this.discard.push(card)
+    }
+
+    drawFromDiscard(): Card {
+        if (this.discard.length == 0) throw new Error("Discard is empty !")
+        return this.discard.pop()!
+    }
+
+    isLastTurn(): boolean {
+        return this.currentPlayer().board.isFullyRevealed() || this.deck.length == 0
     }
 
     getTurnInfo(): string {
@@ -64,6 +84,27 @@ export default class Game {
 
     getGameInfo(): string {
         return "Pioche: [X] (" + this.deck.length + ")\nDéfausse: [" + this.discard.slice(-1)[0].getValue() + "]\n"
+    }
+
+    takeAction() {
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        })
+        rl.question("1. Piocher2. Prendre de la défausseChoix: ", (answer) => {
+            switch (answer) {
+                case "1":
+                    const card = this.drawCard()
+                    card.revealCard()
+                    console.log("\nVous avez pioché: [" + card.getValue() + "]\n")
+                    const action: number = +(prompt("\n1. L'échanger avec une de vos cartes\n2. La défausser\n\nChoix: ") || "-1")
+                    break
+                case "2":
+                    break
+                default:
+                    break
+            }
+        })
     }
 
     toString(): string {

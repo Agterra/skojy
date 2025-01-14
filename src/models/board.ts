@@ -19,6 +19,12 @@ export default class Board {
         this.cards.splice(index, 1)
     }
 
+    replaceCard(newCard: Card, index: number): Card {
+        const card = this.cards[index]
+        this.cards[index] = newCard
+        return card
+    }
+
     revealCard(index: number): void {
         this.cards[index].revealCard()
     }
