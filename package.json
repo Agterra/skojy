@@ -9,9 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.6"
+    "@types/node": "^22.10.6",
+    "@types/ws": "^8.5.13"
   }
 }

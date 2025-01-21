@@ -1,35 +1,54 @@
-import Config from "../config"
-import shuffle from "../utils/shuffle"
+import Config from "../../config"
+import shuffle from "../../utils/shuffle"
 import Board from "./board"
 import Card from "./card"
 import Player from "./player"
 import * as readline from 'node:readline'
 
 export default class Game {
-    public players: Player[]
+    public players: Player[] = []
     public deck: Card[]
     public discard: Card[] = []
     private turn: number = 0
     private currentPlayerIndex: number = 0
 
     constructor() {
-        const playerNames = Array.from({ length: Config.PLAYER_COUNTS }, (_, i) => "Joueur " + String(i + 1))
         let cards = Card.generateCards()
-        const boards = Array.from({ length: Config.PLAYER_COUNTS }, () => new Board([]))
-        let drawCount = 0;
-        while (drawCount < Config.BOARD_SIZE * Config.PLAYER_COUNTS) {
-            const index = Math.floor(Math.random() * cards.length)
-            boards[drawCount % Config.PLAYER_COUNTS]
-                .addCard(cards.splice(index, 1)[0])
-            drawCount++
-        }
-        const players = Array.from({ length: Config.PLAYER_COUNTS }, (_, i) => new Player(boards[i], playerNames[i]))
-        this.players = players
         cards = shuffle(cards)
         const card = cards.pop()!
         card.revealCard()
         this.discard.push(card)
         this.deck = cards
+    }
+    /**
+     * Legacy constructor
+     */
+    // constructor() {
+    //     const playerNames = Array.from({ length: Config.PLAYER_COUNTS }, (_, i) => "Joueur " + String(i + 1))
+    //     let cards = Card.generateCards()
+    //     const boards = Array.from({ length: Config.PLAYER_COUNTS }, () => new Board([]))
+    //     let drawCount = 0;
+    //     while (drawCount < Config.BOARD_SIZE * Config.PLAYER_COUNTS) {
+    //         const index = Math.floor(Math.random() * cards.length)
+    //         boards[drawCount % Config.PLAYER_COUNTS]
+    //             .addCard(cards.splice(index, 1)[0])
+    //         drawCount++
+    //     }
+    //     const players = Array.from({ length: Config.PLAYER_COUNTS }, (_, i) => new Player(boards[i], playerNames[i]))
+    //     this.players = players
+    //     cards = shuffle(cards)
+    //     const card = cards.pop()!
+    //     card.revealCard()
+    //     this.discard.push(card)
+    //     this.deck = cards
+    // }
+    addPlayer(playerName: string): Error | undefined {
+        if (this.players.filter((p) => p.name.toLowerCase() == playerName.toLowerCase()).length > 0) {
+            return Error("player name is already taken")
+        }
+        const player = new Player(new Board([]), playerName);
+        this.players.push(player);
+        return;
     }
 
     currentPlayer(): Player {
@@ -86,7 +105,7 @@ export default class Game {
         return "Pioche: [X] (" + this.deck.length + ")\nDéfausse: [" + this.discard.slice(-1)[0].getValue() + "]\n"
     }
 
-    takeAction() {
+    takeAction(): void {
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout
