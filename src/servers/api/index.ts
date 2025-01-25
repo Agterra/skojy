@@ -20,7 +20,7 @@ export function initAPI(port: number) {
     app.use(bodyParser.json())
     app.use(express.static(path.resolve(__dirname, 'assets')))
     app.set("view engine", "pug")
-    app.set("views", path.join(__dirname, "./templates"))
+    app.set("views", path.join(__dirname, "templates"))
 
     // Routes
     app.use('/', landingRouter)
