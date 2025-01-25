@@ -1,7 +1,7 @@
 const wss = new WebSocket('ws://localhost:8081')
 
 wss.onopen = (event) => {
-    alert("Connected to websocket server")
+    console.log("Successfully connected to websocket server")
 }
 
 wss.onmessage = async (event) => {

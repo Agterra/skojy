@@ -1,7 +1,76 @@
-#content{
-    background-color: aliceblue;
+html,
+body {
+    height: 100%;
 }
 
-#test{
-    background-color: rebeccapurple;
+body {
+    margin: 0;
+    background-color: lightblue;
+}
+
+#signature {
+    padding: 2px;
+    font-size: 10px;
+    color: darkslategrey;
+}
+
+#title {
+    font-size: 100px;
+    color: darkslategrey;
+}
+
+#content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+#spacer {
+    flex: 1;
+}
+
+#login {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: 120px;
+    border-width: 1px 2px 2px 1px;
+    border-style: solid outset outset solid;
+    border-color: darkslategrey;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 4);
+}
+
+#login_form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#login_username_label {
+    margin-right: 10px;
+    color: darkslategrey;
+    font-weight: bold;
+}
+
+#separator {
+    min-height: 10px;
+}
+
+#login_submit {
+    width: 200px;
+    background-color: rgb(80, 190, 40);
+    border-width: 1px 4px 4px 1px;
+    border-style: solid outset outset solid;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: darkslategrey;
 }
