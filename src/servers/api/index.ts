@@ -18,7 +18,7 @@ export function initAPI(port: number) {
     const app = express()
     app.use(logger)
     app.use(bodyParser.json())
-    app.use(express.static('assets'))
+    app.use(express.static(path.resolve(__dirname, 'assets')))
     app.set("view engine", "pug")
     app.set("views", path.join(__dirname, "./templates"))
 
