@@ -3,17 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./dist/index.js"
+    "start": "tsc && npm run assets && npm run templates && node ./dist/index.js",
+    "assets": "cp -r ./src/servers/api/assets ./dist/servers/api/assets",
+    "templates": "cp -r ./src/servers/api/templates ./dist/servers/api/templates"
   },
   "author": "Louis Le Brun",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "pug": "^3.0.3",
     "typescript": "^5.7.3",
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.6",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.10",
+    "@types/pug": "^2.0.10",
     "@types/ws": "^8.5.13"
   }
 }

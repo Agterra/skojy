@@ -1,4 +1,4 @@
-import Config from "../../config"
+import Config from "../config"
 import shuffle from "../../utils/shuffle"
 import Board from "./board"
 import Card from "./card"

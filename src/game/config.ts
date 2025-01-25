@@ -1,7 +1,6 @@
 export default class Config {
     static MAX = 150
     static BOARD_SIZE = 12
-    static PLAYER_COUNTS = 5
     static DISTRIBUTION = new Map<number, number>([
         [-2, 5],
         [0, 15],
