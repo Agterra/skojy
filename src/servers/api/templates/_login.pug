@@ -1,6 +1,6 @@
 //- _login.pug
 div#login
-    form#login_form
+    form#login_form(hx-post="/login", hx-target="#content")
         div#login_input_div
             label#login_username_label(for="username") Pseudo:
             input(name="username", placeholder="Gagagougou")
