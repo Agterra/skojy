@@ -8,5 +8,6 @@ export const sequelize = new Sequelize({
     username: 'root',
     password: '',
     storage: ':memory:',
+    repositoryMode: true,
     models: [Client, Player]
 })
