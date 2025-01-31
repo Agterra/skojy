@@ -75,7 +75,19 @@ body {
     color: darkslategrey;
 }
 
-#login_submit:hover {
+#login_submit:disabled {
+    width: 120px;
+    background-color: lightgray;
+    border-width: 1px 4px 4px 1px;
+    border-style: solid outset outset solid;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: darkslategrey;
+}
+
+
+#login_submit:enabled:hover {
     background-color: rgb(80, 190, 40);
     border-width: 1px 2px 2px 1px;
     border-style: inset outset outset inset;

@@ -1,9 +1,12 @@
 //- _login.pug
 div#login
-    form#login_form(hx-post="/login", hx-target="#content")
+    form#login_form(hx-post="/login", hx-target="#content", method="post")
         div#login_input_div
             label#login_username_label(for="username") Pseudo:
-            input(name="username", placeholder="Gagagougou")
+            input(name="username", placeholder="Gagagougou", oninput="inputEvent(event)")
         div#separator
         div#login_submit_div
-            button#login_submit Je veux jouer
+            button#login_submit(disabled) Je veux jouer
+
+    script
+        include scripts/login.js
