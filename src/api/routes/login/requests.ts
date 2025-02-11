@@ -32,7 +32,7 @@ export const loginHandler = async (req: Request, res: Response) => {
             res.render("_rooms")
             return
         }
-    } else if (skojySessionId) {
+    } else {
         // If a player already exists, we check if there is a sessionId cookie, then compare it
         if (existingPlayer.skojySessionId == skojySessionId) {
             // If it's the same user, then we send a special status code to skip user creation
