@@ -10,7 +10,7 @@ wss.onmessage = async (event) => {
         case 'unique_id':
             const id = getCookie("skojy_session_id")
             if (!id) {
-                setCookie("skojy_session_id", json.body.id, 1)
+                setCookie("skojy_session_id", json.body.id, 100)
             }
             break
     }
