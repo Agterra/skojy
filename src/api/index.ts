@@ -1,10 +1,10 @@
 import express, { NextFunction, Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import path from 'node:path'
-import { colorForCode, terminalColors } from '../../utils/colors'
+import { colorForCode, terminalColors } from '../utils/colors'
+import { loginRouter } from './routes/login'
+import { roomsRouter } from './routes/rooms'
 import cookieParser from 'cookie-parser'
-import { loginRouter } from '../../api/routes/login'
-import { roomsRouter } from '../../api/routes/rooms'
 
 export default class APIService {
     private static instance: APIService

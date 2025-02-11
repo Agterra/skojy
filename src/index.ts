@@ -1,8 +1,8 @@
 import "reflect-metadata"
 import Game from "./game/models/game"
 import { sequelize } from "./data/sequelize"
-import { webSockerService } from "./servers/websocket"
-import { apiService } from "./servers/api"
+import { webSockerService } from "./websocket"
+import { apiService } from "./api"
 
 function initServices() {
     webSockerService

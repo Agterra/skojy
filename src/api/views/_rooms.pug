@@ -1,0 +1,6 @@
+div#rooms
+    h1#title Parties disponibles
+    - const localRooms = rooms || ["Il n'y a aucune partie disponible"]
+    ul
+        each val in localRooms
+            li= val

@@ -1,0 +1,18 @@
+doctype html
+html(lang="fr")
+    head
+        title Skojy
+        link(href="/styles.css", rel="stylesheet")
+        script(src="https://unpkg.com/htmx.org@1.3.1")
+        script
+            include scripts/websocket.js
+    body
+        div#content
+            - const skojyView = loadView || "login"
+            case skojyView
+                when "login" 
+                    include _login.pug
+                when "rooms"
+                    include _rooms.pug
+                default
+                    include _404.pug

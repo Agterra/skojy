@@ -1,0 +1,18 @@
+//- _login.pug
+div#spacer
+    h1#title Skojy !
+    div#login
+        form#login_form(hx-post="/login", method="post", hx-target="#content")
+            div#login_input_div
+                label#login_username_label(for="username") Pseudo:
+                input#login_input(name="username", placeholder="Gagagougou", oninput="inputEvent(event)", required)
+            div#separator
+            div#login_submit_div
+                button#login_submit(disabled) Je veux jouer
+div#spacer
+div#spacer
+p#signature A game made by 
+    a#link(href="https://github.com/Agterra") Agterra
+
+    script
+        include scripts/login.js
