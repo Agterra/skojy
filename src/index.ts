@@ -10,7 +10,7 @@ function initServices() {
 }
 
 async function main() {
-    await sequelize.sync({ force: true })
+    await sequelize.sync()
     initServices()
 
     const game = new Game()

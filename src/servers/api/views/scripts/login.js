@@ -11,6 +11,10 @@ function inputEvent(event) {
     }
 }
 
+document.addEventListener('load', (event) => {
+    console.log('coucou')
+})
+
 document.addEventListener('htmx:afterRequest', (event) => {
     const status = event.detail.xhr.status
     if (status === 200) {

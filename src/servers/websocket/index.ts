@@ -53,14 +53,20 @@ export default class WebSocketService {
 
 }
 
-async function createUser(id: string, body: CreateUserBody) {
+async function createUser(sessionId: string, body: CreateUserBody) {
     if (body.username.length === 0) return
     await clientRepository.create({
-        id,
+        sessionId,
         player: {
             username: body.username
         }
-    }, { include: [playerRepository] })
+    }, { include: [playerRepository], })
+        .catch((reason) => {
+            console.log(reason.errors)
+        })
+
+    const res = await clientRepository.findAll({ include: [playerRepository] })
+    console.log(JSON.stringify(res, null, 2))
 }
 
 export const webSockerService = WebSocketService.getInstance()

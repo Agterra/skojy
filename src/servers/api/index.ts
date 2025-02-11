@@ -23,7 +23,7 @@ export default class APIService {
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(express.static(path.resolve(__dirname, 'assets')))
         app.set("view engine", "pug")
-        app.set("views", path.join(__dirname, "templates"))
+        app.set("views", path.join(__dirname, "views"))
 
         // Routes
         app.use('/', loginRouter)

@@ -7,7 +7,7 @@ export const sequelize = new Sequelize({
     dialect: 'sqlite',
     username: 'root',
     password: '',
-    storage: ':memory:',
+    storage: 'skojy.sqlite',
     repositoryMode: true,
     models: [Client, Player]
 })

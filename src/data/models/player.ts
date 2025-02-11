@@ -1,8 +1,9 @@
-import { BelongsTo, Column, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, ForeignKey, Model, Table, Unique } from "sequelize-typescript";
 import Client from "./client";
 
 @Table
 export default class Player extends Model {
+    @Unique
     @Column
     username!: string
 
